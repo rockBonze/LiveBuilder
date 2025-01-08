@@ -1,0 +1,64 @@
+#!/bin/sh
+
+QEMU=qemu-aarch64-static
+
+start ()
+{
+
+	if [ ! -f "${1}/usr/bin/qemu-aarch64-static" ]; then
+		cp /usr/bin/${QEMU} ./${1}/usr/bin/	
+	fi
+
+	echo "Start to customized $1"
+
+	sudo mount -o bind /dev ${1}/dev
+    sudo mount -o bind /dev/pts ${1}/dev/pts
+    sudo mount -t proc /proc ${1}/proc
+    sudo mount -t sysfs /sys ${1}/sys
+	
+	echo "Mount success"
+
+	sudo chroot ${1} /bin/bash
+}
+
+clean ()
+{
+	sudo rm -rf ${1}/tmp/*
+	sudo rm -rf ${1}/root/.bash_history
+	sudo rm -rf ${1}/root/.vim/
+	sudo rm -rf ${1}/root/.viminfo
+}
+
+stop ()
+{
+	sudo umount ${1}/dev
+    sudo umount ${1}/dev/pts
+    sudo umount ${1}/proc
+    sudo umount ${1}/sys
+	
+	echo "umount success"
+}
+
+if [ "$#" -ne 2 ]; then
+	echo "Usage: ${0} <directory> <start|stop>"
+	exit 1
+fi
+
+case "$2" in
+	start)
+		start "$1"
+	;;
+	stop)
+		stop "$1"
+        ;;
+	clean)
+		clean "$1"
+		;;
+	*)
+		echo "Unknown operation: $2"
+		echo "Usage: $0 <directory> <start|stop>"
+		exit 1
+	;;
+esac
+
+

@@ -1,0 +1,37 @@
+#!/bin/bash -e
+
+CACHE_DIR=./cache
+BOOTSTRAP=${CACHE_DIR}/bootstrap.tar.gz
+PACKAGE_BOOTSTRAP=${CACHE_DIR}/packages.bootstrap.tar.gz
+PACKAGE_CHROOT=${CACHE_DIR}/packages.chroot.tar.gz
+
+TARGET_CACHE=./build/cache/
+TARGET_BOOTSTRAP=./build/cache/bootstrap
+TARGET_PACAKGE_BOOTSTRAP=./build/cache/packages.bootstrap
+TARGET_PACKAGE_CHROOT=./build/cache/packages.chroot
+
+set -e
+
+if [ ! -d ${CACHE_DIR} ]; then
+	echo "Make prepare error, Cache dir is not exits"
+	exit 1
+fi
+
+[ -d ${TARGET_CACHE} ] || mkdir -p ${TARGET_CACHE}
+
+if [ -f $BOOTSTRAP ] && [ ! -d $TARGET_BOOTSTRAP ]; then
+	echo "building bootstrap for cache]"
+	sudo tar -xzf ${BOOTSTRAP} -C ${TARGET_CACHE}
+fi
+
+if [ -f $PACKAGE_BOOTSTRAP ] && [ ! -d $TARGET_PACAKGE_BOOTSTRAP ]; then
+	echo "building package.bootstrap for cache"
+	sudo tar -xzf ${PACKAGE_BOOTSTRAP} -C ${TARGET_CACHE}
+fi
+
+if [ -f $PACKAGE_CHROOT ] && [ ! -d $TARGET_PACKAGE_CHROOT ]; then
+	echo "building package.chroot for cache"
+	sudo tar -xzf ${PACKAGE_CHROOT} -C ${TARGET_CACHE}
+fi
+
+exit 0

@@ -1,0 +1,42 @@
+-----------------------------------------------------------------------------
+Mirror
+│ 
+├── Common 
+│   ├── Ubuntu
+│   │   └── http://ports.ubuntu.com/ubuntu-ports/
+│   ├── Debian
+│   │   └── http://security.debian.org/debian-security/
+├── tsinghua 
+│   ├── Ubuntu
+│   │   └── http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ 
+│   ├── Debian
+│   │   └── http://mirrors.tuna.tsinghua.edu.cn/debian/
+├── aliyun
+│   ├── Ubuntu
+│   │   └── http://mirrors.aliyun.com/ubuntu-ports/
+│   ├── Debian
+│   │   └── http://mirrors.aliyun.com/debian/
+├── huaweicloud
+│   ├── Ubuntu
+│   │   └── http://mirrors.huaweicloud.com/ubuntu-ports/
+│   ├── Debian
+│   │   └── http://mirrors.huaweicloud.com/debian/
+├── 163 
+│   ├── Ubuntu
+│   │   └── http://mirrors.163.com/ubuntu-ports/
+│   ├── Debian
+│   │   └── http://mirrors.163.com/debian/
+├── sysu 
+│   ├── Ubuntu
+│   │   └── http://mirror.sysu.edu.cn/ubuntu-ports/ 
+│   ├── Debian
+│   │   └── http://mirror.sysu.edu.cn/debian/
+├── ustc 
+│   ├── Ubuntu
+│   │   └── http://mirrors.ustc.edu.cn/ubuntu-ports/
+│   ├── Debian
+│   │   └── http://mirrors.ustc.edu.cn/debian/
+
+Archive-areas distribution main restricted universe multiverse
+
+-----------------------------------------------------------------------------

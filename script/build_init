@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+# ubuntu-20.04.6 LTS (Focal Fossa)
+# 5.4.0-192-generic
+# x86_64
+
+# 安装 live-build qemu gcc-aarch64 live-build version 3.0.5-1
+sudo apt-get install binfmt-support qemu-user-static live-build gcc-10-aarch64-linux-gnu make
+
+sudo dpkg -i ./tools/*
+sudo apt-get install -f
+
+# 安装最新debootstrap 更新jammy版本
+sudo apt install debootstrap
+
+
