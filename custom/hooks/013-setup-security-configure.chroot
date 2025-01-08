@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Ensure the script exits on error
+set -e
+
+# setup ssh service configure
+echo "Chroot Hooks: Setup SSH RootLogin"
+if [ -f /etc/ssh/sshd_config ]; then
+	sed -i '/^#\?PermitRootLogin / s/^#\?PermitRootLogin .*/PermitRootLogin yes/' /etc/ssh/sshd_config
+	sed -i '/^#\?PasswordAuthentication/ s/^#\?PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+else
+	echo "Error: sshd_conf does not exist"
+fi
+
+echo "Chroot Hooks: Setup SSH-keygen"
+ssh-keygen -A
+
+

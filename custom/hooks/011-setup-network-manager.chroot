@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Ensure the script exits on error
+set -e
+
+# setup NetworkManager system-conections
+echo "Chroot Hooks: Setup NetworkManagaer configure"
+#chmod 600 /etc/NetworkManager/system-connections/*

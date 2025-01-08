@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Ensure the script exits on error
+set -e
+
+# setup inetd-telnetd service configure
+
+echo "Chroot Hooks: Setup inetd-telnetd service configure"
+if [ -f /etc/inetd.conf ]; then
+	sed -i 's/^#<off>#\s*telnet/telnet/' /etc/inetd.conf
+else
+	echo "Error: /etc/inetd.conf dose not exist"
+fi
+
