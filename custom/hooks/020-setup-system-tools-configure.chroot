@@ -1,0 +1,7 @@
+#!/bin/sh  
+
+echo "Chroot Hooks: setup timezone to Asia/Shanghai"
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+
+

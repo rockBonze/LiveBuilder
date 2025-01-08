@@ -1,0 +1,30 @@
+#!/bin/sh
+echo
+echo -n "    System information as of " 
+/bin/date
+echo
+
+echo "    System startup time:	$(date -d "$(awk -F. '{print $1}' /proc/uptime) second ago" +"%Y-%m-%d %H:%M:%S")"
+
+echo "    System running time:	$(uptime -p)"
+
+echo "    System load:		$(uptime | awk -F'load average:' '{print $2}' | xargs)"
+
+echo "    Usage of /:			$(df -h / | awk 'NR==2 {print $5 " of " $2}')"
+
+if [ -d /data ]; then
+
+	echo "    Usage of /data:		$(df -h /data |awk 'NR==2 {print $5 " of " $2}')"	
+fi
+
+echo "    Memory usage:		$(free | awk 'NR==2 {print int($3/$2 * 100) "%"}')"
+
+echo "    Processes:			$(ps aux --no-headers | wc -l)"
+
+echo "    Users logged in:		$(who | wc -l)"
+
+echo "    IP Address for br-lan:	$(nmcli -g IP4.ADDRESS device show br-lan)"
+
+echo "    IP Address for eth1:	$(nmcli -g IP4.ADDRESS device show eth1)"
+
+echo

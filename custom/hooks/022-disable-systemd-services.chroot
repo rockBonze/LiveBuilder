@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# mask sleep function
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+# mask proc-sys-fs-binfmt_misc.mount
+systemctl mask proc-sys-fs-binfmt_misc.mount
+systemctl mask proc-sys-fs-binfmt_misc.automount
+
+# disable systemd-wait
+systemctl mask systemd-networkd-wait-online.service
+systemctl mask systemd-time-wait-sync.service
+
+# disable the systemd-networkd.service
+systemctl mask systemd-networkd.service
+
+# disable the networking.service
+systemctl mask networking.service
+
+# disbale isc-dhcp-server6
+systemctl mask isc-dhcp-server6
+
+# disable cockpit-motd
+systemctl mask cockpit-motd
+
+# disbale the wire/nl80211
+systemctl mask wpa_supplicant-wired@
+systemctl mask wpa_supplicant-nl80211@
+systemctl mask wpa_supplicant@

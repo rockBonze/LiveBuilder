@@ -1,0 +1,5 @@
+#!/bin/bash
+
+systemctl enable mountfs_mmcblk2.service
+
+systemctl enable insmod_gpio.service

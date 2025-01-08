@@ -1,0 +1,4 @@
+#!/bin/sh
+
+printf "\n"
+printf "Welcome to %s (%s %s %s)\n" "$(uname -n)" "$(uname -o)" "$(uname -r)" "$(uname -m)"

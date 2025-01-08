@@ -1,0 +1,10 @@
+#!/bin/sh  
+
+if [ -d /etc/update-motd.d ]; then
+	chmod 755 -R /etc/update-motd.d/
+fi
+
+if [ -f /etc/motd ]; then
+	rm /etc/motd
+fi
+

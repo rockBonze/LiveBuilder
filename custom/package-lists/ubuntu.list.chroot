@@ -1,0 +1,64 @@
+# Packages needed for Linaro - ALIP
+
+# System base functions
+adduser
+apt
+apt-utils
+zip
+unzip
+bzip2
+sudo
+kmod
+udev
+wget
+less
+vim
+locales
+ca-certificates
+initramfs-tools
+cron
+tzdata
+
+# System monitoring
+psmisc
+procps
+lsof
+
+# disk and filesystem
+gdisk
+parted
+
+# Network manner
+netplan.io
+net-tools
+netbase
+iproute2
+iptables
+network-manager
+
+# Network service
+isc-dhcp-client
+isc-dhcp-server
+openssh-server
+telnetd
+curl
+tcpdump
+iputils-ping
+ufw
+systemd-timesyncd
+
+# Wireless
+#rfkill
+#iw
+#bluez
+
+# Other inteface tools
+#usb-modeswitch
+#usbutils
+
+# webui
+#cockpit
+#cockpit-storaged
+#cockpit-networkmanager
+#libgnutls-openssl27
+

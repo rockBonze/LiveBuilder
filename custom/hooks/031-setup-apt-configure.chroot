@@ -1,0 +1,8 @@
+#!/bin/sh  
+
+echo "Chroot Hooks: Clean apt lists cache"
+if [ -d /var/lib/apt/lists ]; then
+	rm -rf /var/lib/apt/lists/*
+fi
+
+
