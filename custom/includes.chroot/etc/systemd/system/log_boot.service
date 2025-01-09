@@ -1,0 +1,11 @@
+[Unit]
+Description=Log Boot Action
+DefaultDependencies=no
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/log_boot boot
+
+[Install]
+WantedBy=multi-user.target

@@ -15,4 +15,7 @@ fi
 echo "Chroot Hooks: Setup SSH-keygen"
 ssh-keygen -A
 
+# User login print persistent log
+echo "session    optional     pam_exec.so /usr/local/bin/log_login" >> /etc/pam.d/sshd
+echo "session    optional     pam_exec.so /usr/local/bin/log_login" >> /etc/pam.d/login
 

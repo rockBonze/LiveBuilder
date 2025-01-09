@@ -1,0 +1,29 @@
+#!/bin/bash
+
+LOG_DIR="/var/nvlog"
+LOGIN_LOG="$LOG_DIR/login.log"
+
+USER_NAME=$PAM_USER
+LOGIN_TIME=$(date "+%Y-%m-%d %H:%M:%S")
+
+if [ ! -d $LOG_DIR ]; then
+	mkdir -p $LOG_DIR
+fi
+
+if [ "$PAM_SERVICE" == "sshd" ]; then
+	LOGIN_METHOD="SSH"
+	REMOTE_IP=$SSH_CONNECTION
+elif [ "$PAM_SERVICE" == "login" ]; then
+	LOGIN_METHOD="Telnet"
+	REMOTE_IP=$(who | grep "^$USER_NAME" | awk '{print $5}' | sed 's/[()]//g')
+	if [ -z "$REMOTE_IP" ]; then
+		REMOTE_IP=$(last -i | grep "^$USER_NAME" | head -n 1 | awk '{print $3}')
+	fi
+else
+	LOGIN_METHOD="Unknown"
+fi
+
+echo "$LOGIN_TIME - User: $USER_NAME logged in via $LOGIN_METHOD from $REMOTE_IP" >> "$LOGIN_LOG"
+
+exit 0
+

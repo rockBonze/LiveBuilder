@@ -1,0 +1,11 @@
+[Unit]
+Description=Log Reboot Action
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/log_boot reboot
+
+[Install]
+WantedBy=halt.target reboot.target poweroff.target

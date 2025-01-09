@@ -1,5 +1,16 @@
 #!/bin/bash
 
-systemctl enable mountfs_mmcblk2.service
+services=(
+    log_boot.service
+    log_reboot.service
+)
 
-systemctl enable insmod_gpio.service
+for service in "${services[@]}"; do
+    if systemctl enable "$service"; then
+        echo "Success enabled: $service"
+    else
+        echo "Failed enabled: $service"
+    fi
+done
+
+
