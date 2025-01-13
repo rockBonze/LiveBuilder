@@ -18,6 +18,7 @@ ca-certificates
 initramfs-tools
 cron
 tzdata
+supervisor
 
 # System monitoring
 psmisc
