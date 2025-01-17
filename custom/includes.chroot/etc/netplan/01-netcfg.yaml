@@ -7,7 +7,8 @@ network:
             dhcp4: false
         eth1:
             dhcp4: true
-
+            nameservers:
+                addresses: [8.8.8.8]
     bridges:
         br-lan:
             addresses:

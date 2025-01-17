@@ -39,7 +39,6 @@ network-manager
 
 # Network service
 isc-dhcp-client
-isc-dhcp-server
 openssh-server
 telnetd
 curl
@@ -47,11 +46,13 @@ tcpdump
 iputils-ping
 ufw
 systemd-timesyncd
+dnsmasq
+dnsutils
 
 # Wireless
-#rfkill
-#iw
-#bluez
+rfkill
+iw
+bluez
 
 # Other inteface tools
 #usb-modeswitch

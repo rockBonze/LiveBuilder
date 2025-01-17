@@ -17,13 +17,15 @@ systemctl mask systemd-networkd.service
 # disable the networking.service
 systemctl mask networking.service
 
-# disbale isc-dhcp-server6
+# disable isc-dhcp-server6
 systemctl mask isc-dhcp-server6
+
+# disable isc-dhcp-server
+systemctl mask isc-dhcp-server
 
 # disable cockpit-motd
 systemctl mask cockpit-motd
 
-# disbale the wire/nl80211
+# disable the wire/nl80211
 systemctl mask wpa_supplicant-wired@
 systemctl mask wpa_supplicant-nl80211@
-systemctl mask wpa_supplicant@
