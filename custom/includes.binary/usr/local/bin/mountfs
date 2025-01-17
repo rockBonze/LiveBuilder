@@ -1,0 +1,12 @@
+#!/bin/sh
+
+resize2fs /dev/mmcblk2p6
+
+if [ ! -d "/data" ]; then
+	mkdir /data
+fi
+
+mkfs.ext4 /dev/mmcblk2p8
+mount /dev/mmcblk2p8 /data
+
+exit 0

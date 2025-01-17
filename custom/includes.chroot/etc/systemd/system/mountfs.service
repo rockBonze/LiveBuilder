@@ -1,0 +1,13 @@
+[Unit]
+Description=Resize and Mount File System for mmcb2lk
+After=local-fs.target
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mountfs
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+

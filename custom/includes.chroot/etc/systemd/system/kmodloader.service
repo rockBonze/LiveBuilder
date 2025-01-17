@@ -1,0 +1,13 @@
+[Unit]
+Description=Install kernel modules for rk3568j
+After=local-fs.target
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/kmodloader
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+

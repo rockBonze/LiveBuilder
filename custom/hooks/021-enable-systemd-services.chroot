@@ -3,6 +3,8 @@
 services=(
     log_boot.service
     log_reboot.service
+	mountfs.service
+	kmodloader.service
 )
 
 for service in "${services[@]}"; do

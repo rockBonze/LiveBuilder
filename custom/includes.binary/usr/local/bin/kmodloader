@@ -1,0 +1,11 @@
+#!/bin/sh
+
+KERNEL_VERSION="5.10.160"
+MODULE_DIR="/lib/modules/$KERNEL_VERSION/"
+
+find "$MODULE_DIR" -name "*.ko" -type f | while read -r module; do
+    insmod "$module" && echo "$module loading success" || echo "$module loading error"
+done
+
+exit 0
+

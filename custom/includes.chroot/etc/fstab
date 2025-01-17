@@ -1,0 +1,6 @@
+# UNCONFIGURED FSTAB FOR BASE SYSTEM
+
+/dev/mmcblk2p8	/data	ext4	defaults,nofail		0	2
+
+tmpfs	/var/log	tmpfs	nosuid,nodev,size=128M	0	0
+
