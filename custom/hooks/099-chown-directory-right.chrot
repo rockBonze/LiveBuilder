@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Chroot Hooks: Chown directory right"
+
+[ -d /etc ] && chown root:root /etc
+
+[ -d /usr ] && chown root:root /usr
+
+[ -d /usr/lib ] && chown root:root /usr/lib
+

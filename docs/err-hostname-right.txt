@@ -1,0 +1,7 @@
+- 问题: binary中/etc/hosts /etc/hostname文件所属异常
+
+
+- 解决: 修改/usr/lib/live/build/chroot_hostname
+			/usr/lib/live/build/chroot_hosts
+		
+		cp -a 改成 cp
