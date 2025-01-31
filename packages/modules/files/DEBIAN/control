@@ -1,0 +1,5 @@
+Package: kernel-modules
+Description: Kernel modules for Linux 5.10.160
+Version: 1.0.0
+Architecture: arm64
+Maintainer: bonze

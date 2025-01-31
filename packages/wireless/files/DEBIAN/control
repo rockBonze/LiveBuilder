@@ -1,0 +1,5 @@
+Package: wireless
+Description: Wireless firmware for ap3575
+Version: 1.0.0
+Architecture: arm64
+Maintainer: bonze
