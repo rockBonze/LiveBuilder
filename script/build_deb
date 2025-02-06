@@ -1,0 +1,22 @@
+#!/bin/bash -e
+
+BUILD_DIR=./build/deb_packages
+
+if [ ! -d ${BUILD_DIR} ]; then
+	mkdir -p ${BUILD_DIR}
+fi
+
+echo "make[0]: Building deb packages to ${BUILD_DIR}"
+
+for dir in ./packages/*/; do
+    if [ -d $dir ]; then
+        if [ -f ${dir}/Makefile ]; then
+            (cd ${dir} && make)
+        else
+            echo "No Makefile found in $dir"
+        fi
+    fi
+done
+
+echo "Deb Packages Building complete."
+

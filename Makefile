@@ -53,6 +53,13 @@ config:
 		echo "make config error: ./script/configure not exist."; \
 	fi
 
+deb:
+	@if [ -f ./script/build_deb ]; then \
+		./script/build_deb; \
+	else \
+		echo "make deb error: ./script/build_deb not exist."; \
+	fi
+
 ubuntu:
 	@if [ -f ./script/make_image ]; then \
 		./script/make_image; \

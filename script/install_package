@@ -1,0 +1,37 @@
+#!/bin/bash -e
+
+DEB_DIR=./build/deb_packages
+MOUNTPOINT=$1
+
+if [ -z "$MOUNTPOINT" ]; then
+    echo "MOUNTPOINT is required"
+    exit 1
+fi
+
+echo "make[0]: Installing packages to ${MOUNTPOINT}"
+
+if [ -d ${DEB_DIR} ]; then
+	sudo mkdir -p ${MOUNTPOINT}/packages
+	sudo cp -rf ${DEB_DIR}/* ${MOUNTPOINT}/packages
+fi
+
+if [ ! -f ${MOUNTPOINT}/usr/bin/qemu-aarch64-static ]; then
+	sudo cp /usr/bin/qemu-aarch64-static ${MOUNTPOINT}/usr/bin/
+fi
+
+sudo mount -o bind /dev ${MOUNTPOINT}/dev
+
+cat << EOF | sudo chroot ${MOUNTPOINT}
+dpkg -i /packages/*
+rm -rf /packages
+rm -rf /tmp/*
+rm -rf /root/.bash_history
+rm -rf /root/.vim/
+rm -rf /root/.viminfo
+rm -rf /var/lib/apt/lists/*
+EOF
+
+sudo umount ${MOUNTPOINT}/dev
+
+echo "Packages installation complete."
+

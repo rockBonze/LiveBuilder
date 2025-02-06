@@ -36,6 +36,9 @@ trap finish ERR
 echo Copy rootfs to ${MOUNTPOINT}
 sudo cp -rfp ${TARGET_ROOTFS_DIR}/*  ${MOUNTPOINT}
 
+echo Install packages to ${MOUNTPOINT}
+[ -f "./script/install_package" ] && ./script/install_package ${MOUNTPOINT}
+
 echo Umount rootfs
 sudo umount ${MOUNTPOINT}
 
