@@ -20,7 +20,7 @@ fi
 [ -d ${TARGET_CACHE} ] || mkdir -p ${TARGET_CACHE}
 
 if [ -f $BOOTSTRAP ] && [ ! -d $TARGET_BOOTSTRAP ]; then
-	echo "building bootstrap for cache]"
+	echo "building bootstrap for cache"
 	sudo tar -xzf ${BOOTSTRAP} -C ${TARGET_CACHE}
 fi
 

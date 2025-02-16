@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # (C) 2012-2016 Fathi Boudra <fathi.boudra@linaro.org>
 
 # Calls all necessary live-build programs in the correct order to complete
@@ -13,7 +12,9 @@ BINARY=$(BUILD_DIR)/binary
 MERGE_DIR=./packages
 VERSION=1.0
 
-BASEIMG=ubuntu-focal-$(VERSION)
+SYSTEM=$(shell cat ./.system)
+DISTRIBUTION=$(shell cat ./.distribution)
+BASEIMG=$(SYSTEM)-$(DISTRIBUTION)-$(VERSION)
 IMAGEPREFIX=$(BASEIMG)-`date +%Y%m%d`
 LOGFILE=$(IMAGEPREFIX).build-log.txt
 CONFIGFILE=$(IMAGEPREFIX).config.tar.bz2
@@ -25,6 +26,7 @@ SHA1SUMSFILE=$(IMAGEPREFIX).sha1sums.txt
 
 all:
 	set -e; 
+	
 	@if [ ! -d $(BUILD_DIR) ]; then \
 		mkdir build; \
 	fi
@@ -47,10 +49,10 @@ prepare:
 	fi
 
 config:
-	@if [ -f ./script/configure ]; then \
-		./script/configure; \
+	@if [ -f ./.config ]; then \
+		./.config; \
 	else \
-		echo "make config error: ./script/configure not exist."; \
+		echo "make config error: config not exist, please run cp configure/xx_configure .config."; \
 	fi
 
 deb:
@@ -60,9 +62,9 @@ deb:
 		echo "make deb error: ./script/build_deb not exist."; \
 	fi
 
-ubuntu:
+image:
 	@if [ -f ./script/make_image ]; then \
-		./script/make_image; \
+		./script/make_image $(SYSTEM) $(DISTRIBUTION); \
 	else \
 		echo "make image error: ./script/make_image not exist."; \
 	fi
@@ -99,9 +101,15 @@ clean:
 	rm -f $(BUILD_DIR)/$(BASEIMG)*
 	rm -rf $(BUILD_DIR)/config
 	rm -rf $(BUILD_DIR)/image
+	rm -f $(BUILD_DIR)/*.build-log.txt
+	rm -f $(BUILD_DIR)/*.config.tar.bz2
+	rm -f $(BUILD_DIR)/*.contents
+	rm -f $(BUILD_DIR)/*.packages
+	rm -f $(BUILD_DIR)/*.tar.gz
+	rm -f $(BUILD_DIR)/*.md5sums.txt
+	rm -f $(BUILD_DIR)/*.sha1sums.txt
+
 
 deepclean:
 	cd $(BUILD_DIR) && sudo lb clean --purge
-	rm -f $(BUILD_DIR)/$(BASEIMG)*
-	rm -rf $(BUILD_DIR)/config
-	rm -rf $(BUILD_DIR)/image
+	rm -rf $(BUILD_DIR)/*

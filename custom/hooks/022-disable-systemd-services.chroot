@@ -6,6 +6,7 @@ systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 # mask proc-sys-fs-binfmt_misc.mount
 systemctl mask proc-sys-fs-binfmt_misc.mount
 systemctl mask proc-sys-fs-binfmt_misc.automount
+systemctl mask systemd-binfmt.service
 
 # disable systemd-wait
 systemctl mask systemd-networkd-wait-online.service
