@@ -2,13 +2,13 @@
 
 ## 介绍
 
-LiveBuilder 是基于[live-build](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html) 构建 Debian/Ubuntu 文件系统镜像的软件包。能够快速自动化编译构建目标版本镜像。此外，还可以根据预配置进行自定义系统配置、预装系统软件包等，实现定制化文件系统。
+**LiveBuilder** 是基于[live-build](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html) 构建 Debian/Ubuntu 文件系统镜像的软件包。能够快速自动化编译构建目标版本镜像。此外，还可以根据预配置进行自定义系统配置、预装系统软件包等，实现定制化文件系统。
 
 live-build源码：https://salsa.debian.org/live-team/live-build
 
 live-build文档：[https ://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html)
 
-LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbase系统上进行了初步的构建，默认系统具备以下功能：
+**LiveBuilder**主要针对于ARM架构的嵌入式文件系统开发。基于minbase系统上进行了初步的构建，默认系统具备以下功能：
 
 - 用户权限：root:heyroot	admin:admin
 - 系统服务：Systemd, journald
@@ -46,8 +46,8 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
 - **获取工程源码，进入工程目录**
 
 	```bash
-	git clone https://github.com/rockBonze/livebuilder.git
-	cd live-building
+	git clone https://github.com/rockBonze/LiveBuilder.git
+	cd LiveBuilder
 	```
 
 - **安装所需的软件包和依赖**
@@ -64,7 +64,7 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
   make config
   ```
 
-  执行后，会在 `build/config/`目录下生成配置，后续的编译依靠这些配置项进行。
+  执行后，会在`build/config/`目录下生成配置，后续的编译依靠这些配置项进行。
 
 - **编译文件系统**
 
@@ -80,7 +80,7 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
   make image
   ```
 
-  制作完成后，会在 `build/image`目录下生成文件系统镜像。
+  制作完成后，会在`build/image`目录下生成文件系统镜像。
 
 - **重新构建**
 
@@ -101,27 +101,27 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
   make && make image
   ```
 
-​	
+
 
 ## 定制与扩展
 
 - **定制其他版本和架构**
 
-	如要定制其他版本号或者其他架构的系统，参考 `configure`目录下的配置并修改 `lb config`的参数。其他的架构和版本可能不兼容默认配置的软件包和配置项，需根据编译或使用过程中的错误进行调整。
+	如要定制其他版本号或者其他架构的系统，参考`configure`目录下的配置并修改`lb config`的参数。其他的架构和版本可能不兼容默认配置的软件包和配置项，需根据编译或使用过程中的错误进行调整。
 
 - **修改默认系统配置**
 
-	默认系统配置在 `live-building/custom/`目录下，可根据自身系统需求进行修改。
+	默认系统配置在`LiveBuilder/custom/`目录下，可根据自身系统需求进行修改。
 
 - **自定义软件包**
 
-	LiveBuilder的自定义软件包使用的是deb格式，在制作镜像之前将deb包制作好。制作镜像时会自动安装自定义软件包。
+	**LiveBuilder**的自定义软件包使用的是`deb`格式，在制作镜像之前将`deb`包制作好。制作镜像时会自动安装自定义软件包。
 
 	```bash
 	make deb && make image
 	```
 
-	执行 `make deb`后，会自动构建packages目录下的自定义软件包，构建后的路径位于 `build/deb_packages`。
+	执行`make deb`后，会自动构建`packages`目录下的自定义软件包，构建后的路径位于`build/deb_packages`。
 
 	
 
@@ -138,7 +138,7 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
 
 - **问题：编译/构建所需的时间过长**
 
-	解决：检查网络环境，更换国内镜像源，例如清华源。
+	解决：检查网络环境，更换国内镜像源，例如清华源。其他的源在`LiveBuilder/docs/apt_sources_list.txt`中
 
 	```bash
 	lb config \
@@ -156,8 +156,8 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
   将压缩包解压至工程目录下，生成`cache/`目录。
 
   ```bash
-  sudo tar -xzf live-building/
-  make preapre
+  sudo tar -xzf xxx_xxx_cache.tar.gz -C LiveBuilder/
+  cd LiveBuilder && make preapre
   ```
 
   最后会在`build/`目录下生成`cache/`目录。
@@ -171,11 +171,12 @@ LiveBuilder主要针对于ARM架构的嵌入式文件系统开发。基于minbas
 	- `/etc/ufw/before.rules` 
 	- `/etc/fstab`
 	
-	
+
+
 
 ## 下载
 
-**ARM64各系统版本的软件缓存包，点击下载**
+**ARM64各系统版本的软件缓存包，点击[下载](https://drive.google.com/drive/folders/1O4w3z7xb0WTiNWYT4ClP9_eU1cYgTlQK?usp=sharing)**
 
 
 
